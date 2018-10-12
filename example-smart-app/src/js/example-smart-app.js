@@ -70,8 +70,10 @@
           ret.resolve(p);
         });
 
-        $.when(pt, doc).done(function(patient, doc) {
-          console.log(doc);
+        $.when(pt, doc).done(function(patient, docmnt) {
+          doc.forEach(function(docmnt) {
+            $('#document_table').append('<tr><td>' + docmnt.text + '</td></tr>')
+          })
         });
 
 
