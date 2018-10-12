@@ -71,10 +71,10 @@
         });
 
         $.when(pt, doc).done(function(patient, docmnt) {
-          console.log(doc);
-          doc.forEach(function(doc_entry) {
+          console.log(docmnt);
+          docmnt.forEach(function(doc_entry) {
             $('#document_table').append('<tr><td>' + doc_entry.text + '</td></tr>')
-          });
+          })
         });
 
 
