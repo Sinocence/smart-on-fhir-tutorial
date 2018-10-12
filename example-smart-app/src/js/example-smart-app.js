@@ -22,7 +22,14 @@
                     }
                   });
 
+        // Document Reference
+        var doc = smart.patient.api.fetchAll({
+                    type: 'DocumentReference'
+        });
+
         $.when(pt, obv).fail(onError);
+
+        $.when(pt, doc).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
@@ -62,6 +69,12 @@
 
           ret.resolve(p);
         });
+
+        $.when(pt, doc).done(function(patient, doc) {
+          console.log(doc);
+        });
+
+
       } else {
         onError();
       }
