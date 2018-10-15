@@ -161,7 +161,9 @@
           if (user != "") {
               alert("Welcome again " + user);
           } else {
-             user = smart.user
+             user = smart.user;
+             console.log("HERE IS USER");
+             console.log(user);
              if (user != "" && user != null) {
                  setCookie("username", user, 30);
              }
