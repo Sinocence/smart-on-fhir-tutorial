@@ -10,6 +10,7 @@
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
 
+        console.log(smart.userId);
         checkCookie(smart);
 
         var patient = smart.patient;
