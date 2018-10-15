@@ -10,6 +10,9 @@
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
 
+        //User
+        checkCookie(smart);
+
         var patient = smart.patient;
         var pt = patient.read();
         var obv = smart.patient.api.fetchAll({
@@ -154,12 +157,12 @@
           return "";
       }
 
-      function checkCookie() {
+      function checkCookie(smart) {
           var user=getCookie("username");
           if (user != "") {
               alert("Welcome again " + user);
           } else {
-             user = fhirClient.userId
+             user = smart.user
              if (user != "" && user != null) {
                  setCookie("username", user, 30);
              }
