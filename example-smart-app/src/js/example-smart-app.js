@@ -159,7 +159,7 @@
       function checkCookie(smart) {
           var user=getCookie("username");
           if (user != "") {
-              alert("Welcome again " + user);
+              console.log("Welcome again " + user);
           } else {
              user = smart.user;
              if (user != "" && user != null) {
