@@ -27,13 +27,15 @@
                   });
 
         // Document Reference
-        var doc = smart.api.fetchAll({
+        var doc = smart.patient.api.fetchAll({
                     type: 'DocumentReference'
         });
 
         // Compositions
-        var com = smart.patient.api.fetchAll({
+        var com = smart.api.search({
                   type: 'Composition'
+        }).done(function(co) {
+          console.log(co);
         })
 
         $.when(pt, obv).fail(onError);
