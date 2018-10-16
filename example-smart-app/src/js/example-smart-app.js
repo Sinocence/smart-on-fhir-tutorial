@@ -27,7 +27,7 @@
                   });
 
         // Document Reference
-        var doc = smart.patient.api.fetchAll({
+        var doc = smart.api.fetchAll({
                     type: 'DocumentReference'
         });
 
