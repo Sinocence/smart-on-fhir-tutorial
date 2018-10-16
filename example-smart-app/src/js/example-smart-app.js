@@ -27,7 +27,7 @@
                   });
 
         // Document Reference
-        var doc = smart.patient.api.fetchAll({
+        var doc = smart.api.fetchAll({
                     type: 'DocumentReference'
         });
 
@@ -82,6 +82,7 @@
         });
 
         $.when(pt, doc).done(function(patient, docmnt) {
+          console.log("Documents: ");
           console.log(docmnt);
           docmnt.forEach(function(doc_entry) {
             $('#document_table').append('<tr><td>' + doc_entry.text.div + '</td></tr>')
@@ -89,8 +90,9 @@
         });
 
         $.when(pt, com).done(function(patient, compo) {
+          console.log("Composition: ");
           console.log(compo);
-          docmnt.forEach(function(comp_entry) {
+          compo.forEach(function(comp_entry) {
             // $('#document_table').append('<tr><td>' + comp_entry + '</td></tr>')
           })
         });
