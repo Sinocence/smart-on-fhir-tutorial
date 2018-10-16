@@ -32,7 +32,7 @@
         });
 
         // Compositions
-        var com = smart.api.search({
+        var com = smart.api.fetchAll({
                   type: 'Composition'
         }).done(function(co) {
           console.log("Compositions: ")
