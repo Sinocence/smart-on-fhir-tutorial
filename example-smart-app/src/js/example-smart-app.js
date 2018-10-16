@@ -27,12 +27,12 @@
                   });
 
         // Document Reference
-        var doc = smart.api.fetchAll({
+        var doc = smart.api.search({
                     type: 'DocumentReference'
         });
 
         // Compositions
-        var com = smart.api.fetchAll({
+        var com = smart.api.search({
                   type: 'Composition'
         }).done(function(co) {
           console.log("Compositions: ")
