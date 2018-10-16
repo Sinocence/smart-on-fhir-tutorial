@@ -31,9 +31,16 @@
                     type: 'DocumentReference'
         });
 
+        // Compositions
+        var com = smart.patient.api.fetchAll({
+                  type: 'Composition'
+        })
+
         $.when(pt, obv).fail(onError);
 
         $.when(pt, doc).fail(onError);
+
+        $.when(pt, com).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
@@ -78,6 +85,13 @@
           console.log(docmnt);
           docmnt.forEach(function(doc_entry) {
             $('#document_table').append('<tr><td>' + doc_entry.text.div + '</td></tr>')
+          })
+        });
+
+        $.when(pt, com).done(function(patient, compo) {
+          console.log(compo);
+          docmnt.forEach(function(comp_entry) {
+            // $('#document_table').append('<tr><td>' + comp_entry + '</td></tr>')
           })
         });
 
