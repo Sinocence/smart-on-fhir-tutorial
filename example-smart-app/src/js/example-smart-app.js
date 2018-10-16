@@ -35,6 +35,7 @@
         var com = smart.api.search({
                   type: 'Composition'
         }).done(function(co) {
+          console.log("Compositions: ")
           console.log(co);
         })
 
