@@ -13,10 +13,9 @@
         console.log("userId: " + smart.userId);
         console.log("user info:");
         console.log(smart.user);
-        
-        $.when(smart.api.read({type: userIdSections[userIdSections.length-2], id: userIdSections[userIdSections.length-1]}))
-        .done(function(userResult){
-          console.log(userResult);
+
+        smart.user.read({type: "email"}).done(function(res) {
+          console.log(res);
         });
 
         // checkCookie(smart);
