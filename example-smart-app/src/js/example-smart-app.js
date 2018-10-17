@@ -9,13 +9,13 @@
 
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
-
         console.log("userId: " + smart.userId);
-        console.log("user info:");
-        console.log(smart.user);
-
         smart.user.read({type: "email"}).done(function(res) {
+          console.log("user info:")
           console.log(res);
+          user_emails = res.telecom.filter(item => item.system == "email");
+          $("#user_id").html(smart.userId);
+          $("#user_email").html(user_emails[0]);
         });
 
         // checkCookie(smart);
