@@ -15,10 +15,10 @@
           console.log(res);
           console.log(res.telecom);
           user_email = res.telecom.find(function (element) {
-            return (element.system == "email");
+            return (element.system == "email"); // a telecom object
           });
           $("#user_id").html(smart.userId);
-          $("#user_email").html(user_email);
+          $("#user_email").html(user_email.value);
         });
 
         // checkCookie(smart);
