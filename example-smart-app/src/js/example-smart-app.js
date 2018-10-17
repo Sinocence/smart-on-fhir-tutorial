@@ -10,10 +10,13 @@
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
         console.log("userId: " + smart.userId);
-        smart.user.read({type: "email"}).done(function(res) {
+        smart.user.read().done(function(res) {
           console.log("user info:")
           console.log(res);
-          user_emails = res.telecom.filter(item => item.system == "email");
+          console.log(res.telecom);
+          user_email = res.telecom.find(function (element) {
+            return (element.system == "email");
+          });
           $("#user_id").html(smart.userId);
           $("#user_email").html(user_emails[0]);
         });
