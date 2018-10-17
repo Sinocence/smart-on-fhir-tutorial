@@ -10,7 +10,14 @@
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
 
-        console.log(smart.userId);
+        console.log("userId: " + smart.userId);
+        console.log("user info:");
+        
+        $.when(fhirClient.api.read({type: userIdSections[userIdSections.length-2], id: userIdSections[userIdSections.length-1]}))
+        .done(function(userResult){
+          console.log(userResult);
+        });
+
         // checkCookie(smart);
 
         var patient = smart.patient;
