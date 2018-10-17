@@ -18,7 +18,7 @@
             return (element.system == "email");
           });
           $("#user_id").html(smart.userId);
-          $("#user_email").html(user_emails[0]);
+          $("#user_email").html(user_email);
         });
 
         // checkCookie(smart);
