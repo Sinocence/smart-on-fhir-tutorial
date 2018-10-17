@@ -11,7 +11,7 @@
       if (smart.hasOwnProperty('patient')) {
 
         console.log(smart.userId);
-        checkCookie(smart);
+        // checkCookie(smart);
 
         var patient = smart.patient;
         var pt = patient.read();
@@ -27,23 +27,13 @@
                   });
 
         // Document Reference
-        var doc = smart.api.search({
+        var doc = smart.patient.api.fetchAll({
                     type: 'DocumentReference'
         });
-
-        // Compositions
-        var com = smart.api.search({
-                  type: 'Composition'
-        }).done(function(co) {
-          console.log("Compositions: ")
-          console.log(co);
-        })
 
         $.when(pt, obv).fail(onError);
 
         $.when(pt, doc).fail(onError);
-
-        $.when(pt, com).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
@@ -85,18 +75,8 @@
         });
 
         $.when(pt, doc).done(function(patient, docmnt) {
-          console.log("Documents: ");
-          console.log(docmnt);
           docmnt.forEach(function(doc_entry) {
             $('#document_table').append('<tr><td>' + doc_entry.text.div + '</td></tr>')
-          })
-        });
-
-        $.when(pt, com).done(function(patient, compo) {
-          console.log("Composition: ");
-          console.log(compo);
-          compo.forEach(function(comp_entry) {
-            // $('#document_table').append('<tr><td>' + comp_entry + '</td></tr>')
           })
         });
 
@@ -153,40 +133,40 @@
     }
   }
 
-  function setCookie(cname,cvalue,exdays) {
-        var d = new Date();
-        d.setTime(d.getTime() + (exdays*24*60*60*1000));
-        var expires = "expires=" + d.toGMTString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-      }
+  // function setCookie(cname,cvalue,exdays) {
+  //       var d = new Date();
+  //       d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  //       var expires = "expires=" + d.toGMTString();
+  //       document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  //     }
 
-      function getCookie(cname) {
-          var name = cname + "=";
-          var decodedCookie = decodeURIComponent(document.cookie);
-          var ca = decodedCookie.split(';');
-          for(var i = 0; i < ca.length; i++) {
-              var c = ca[i];
-              while (c.charAt(0) == ' ') {
-                  c = c.substring(1);
-              }
-              if (c.indexOf(name) == 0) {
-                  return c.substring(name.length, c.length);
-              }
-          }
-          return "";
-      }
+  //     function getCookie(cname) {
+  //         var name = cname + "=";
+  //         var decodedCookie = decodeURIComponent(document.cookie);
+  //         var ca = decodedCookie.split(';');
+  //         for(var i = 0; i < ca.length; i++) {
+  //             var c = ca[i];
+  //             while (c.charAt(0) == ' ') {
+  //                 c = c.substring(1);
+  //             }
+  //             if (c.indexOf(name) == 0) {
+  //                 return c.substring(name.length, c.length);
+  //             }
+  //         }
+  //         return "";
+  //     }
 
-      function checkCookie(smart) {
-          var user=getCookie("username");
-          if (user != "") {
-              console.log("Welcome again " + user);
-          } else {
-             user = smart.user;
-             if (user != "" && user != null) {
-                 setCookie("username", user, 30);
-             }
-          }
-      }
+  //     function checkCookie(smart) {
+  //         var user=getCookie("username");
+  //         if (user != "") {
+  //             console.log("Welcome again " + user);
+  //         } else {
+  //            user = smart.user;
+  //            if (user != "" && user != null) {
+  //                setCookie("username", user, 30);
+  //            }
+  //         }
+  //     }
 
 
 
