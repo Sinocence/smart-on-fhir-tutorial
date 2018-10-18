@@ -9,6 +9,15 @@
 
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
+
+        cont Http = new XMLHttpRequest();
+        const url='https://r3.smarthealthit.org/Composition/163588/$document?persist=true'
+        Http.open("GET", url);
+        Http.send();
+        Http.onreadystatechange=(e)=>{
+          console.log(Http.responseText);
+        }
+
         console.log("userId: " + smart.userId);
         smart.user.read().done(function(res) {
           console.log("user info:")
