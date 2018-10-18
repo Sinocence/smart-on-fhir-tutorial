@@ -10,7 +10,7 @@
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
 
-        cont Http = new XMLHttpRequest();
+        const Http = new XMLHttpRequest();
         const url='https://r3.smarthealthit.org/Composition/163588/$document?persist=true'
         Http.open("GET", url);
         Http.send();
